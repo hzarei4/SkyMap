@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import math, time, datetime, os, ephem
 from astropy import wcs
 
 def apparent_stars(star_catalog_name):
@@ -47,7 +46,24 @@ stars_ids, stars_x, stars_y, stars_mags = zip(*stars_ixym)
 
 # Work on Size of Alpha values of the Stars with their magnitude 
 #print(list(stars_mags))
-stars_mags_new = [np.max(stars_mags)-(np.min(stars_mags)+x)-1 for x in list(stars_mags)]
+#stars_mags_new = [np.max(stars_mags)-(np.min(stars_mags)+x)-1 for x in list(stars_mags)]
+stars_mags_new = []
+for i3 in list(stars_mags):
+    if i3 <= 0:
+        stars_mags_new.append(7)
+    elif i3<=1:
+        stars_mags_new.append(6)
+    elif i3<=2:
+        stars_mags_new.append(5)
+    elif i3<=3:
+        stars_mags_new.append(4)
+    elif i3<=4:
+        stars_mags_new.append(3)
+    elif i3<=5:
+        stars_mags_new.append(2)
+    else:
+        stars_mags_new.append(1)
+
 
 fig = plt.figure()
 ax = fig.add_subplot()
