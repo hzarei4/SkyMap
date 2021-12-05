@@ -13,6 +13,8 @@ def apparent_stars(star_catalog_name):
     return stars_id, stars_ra, stars_dec, stars_mag
 
 
+# ra-dec to alt-az and then plotting the stars in the sky
+
 
 stars_id, stars_ra, stars_dec, stars_mag = apparent_stars('HIP_mag6')
 
@@ -67,12 +69,12 @@ for i3 in list(stars_mags):
 
 fig = plt.figure()
 ax = fig.add_subplot()
-#plt.subplot()#projection=wcs2)
+plt.subplot(projection=wcs2)
 ax.scatter(stars_x, stars_y, s=stars_mags_new, alpha=1.0, color=(0.8, 0.8, 0.8), edgecolors='none')
 
 #ax = plt.gca()
 ax.set_facecolor((0.0, 0.0, 0.2))
-#plt.grid()#color='white', ls='solid')
+ax.grid(color='white', ls='solid')
 ax.set_aspect('equal', adjustable='box')
 #ax.axis('equal')
 #ax.set_xlim(xmin=0.0, xmax=100)
@@ -82,5 +84,5 @@ ax.get_xaxis().set_ticks([])
 ax.get_yaxis().set_ticks([])
 #ax.aspect('equal', 'datalim')
 #ax.margins(0.1)
-plt.savefig('test.png', pad_inches=0.0, bbox_inches='tight', dpi=2000)
+#plt.savefig('test.png', pad_inches=0.0, bbox_inches='tight', dpi=2000)
 plt.show()
